@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Weather</title>
+        <link rel="stylesheet" href="./styles/styles.css"/>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js" integrity="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="/scripts/script.js" defer></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="current-info">
+                <div class="date-container">
+                    <div class="time" id="time">
+                        12:30
+                    </div>
+                    <div class="date" id="date">
+                        Monday, 24 May
+                    </div>
+                    <div class="others" id="current-weather-items">
+                        <div class="weather-item"> 
+                            <div>Humidity</div>
+                            <div>$(humidity)</div>
+                        </div>
+                        <div class="weather-item">
+                            <div>Pressure</div>
+                            <div>$(pressure)</div>
+                        </div>
+                        <div class="weather-item">
+                            <div>Wind Speed</div>
+                            <div>$(wind_speed)</div>
+                        </div>
+                        <div class="weather-item">
+                            <div>Sunrise</div>
+                            <div>$(sunrise)</div>
+                        </div>
+                        <div class="weather-item">
+                            <div>Sunset</div>
+                            <div>$(sunset)</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="place-container">
+                    <div class="timezone" id="timezone">Europe/UTC+0</div>
+                    <div id="country" class="country">UK</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="future-forecast">
+            <span id="dots"></span>
+            <span id="more">
+                <div class="today" id="current-temp">
+                    <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="" class="w-icon">
+                    <div class="others">
+                        <div class="day">Monday</div>
+                        <div class="temp">Day - 25 C</div>
+                        <div class="temp">Night - 5 C</div>
+                    </div>
+                </div>
+    
+                <div class="weather-forecast" id="weather-forecast">
+                    <div class="weather-forecast-item">
+                        <div class="day">Tue</div>
+                        <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="" class="w-icon">
+                        <div class="temp">Day - 25 C</div>
+                        <div class="temp">Night - 5 C</div>
+                    </div>
+                    <div class="weather-forecast-item">
+                        <div class="day">Wed</div>
+                        <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="" class="w-icon">
+                        <div class="temp">Day - 25 C</div>
+                        <div class="temp">Night - 5 C</div>
+                    </div>
+                    <div class="weather-forecast-item">
+                        <div class="day">Thur</div>
+                        <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="" class="w-icon">
+                        <div class="temp">Day - 25 C</div>
+                        <div class="temp">Night - 5 C</div>
+                    </div>
+                    <div class="weather-forecast-item">
+                        <div class="day">Fri</div>
+                        <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="" class="w-icon">
+                        <div class="temp">Day - 25 C</div>
+                        <div class="temp">Night - 5 C</div>
+                    </div>
+                    <div class="weather-forecast-item">
+                        <div class="day">Sat</div>
+                        <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="" class="w-icon">
+                        <div class="temp">Day - 25 C</div>
+                        <div class="temp">Night - 5 C</div>
+                    </div>
+                </div>
+            </span>
+        </div>
+        <button class="button" onclick=readmore() id="myBtn">5-Day Forecast</button>
+        <script>
+            //show more
+            function readmore() {
+                var dots = document.getElementById("dots");
+                var moreText = document.getElementById("more");
+                var btnText = document.getElementById("myBtn");
+
+                if (dots.style.display === "none") {
+                    dots.style.display = "inline";
+                    btnText.innerHTML = "5-Day Forecast"; 
+                    moreText.style.display = "none";
+                } else {
+                dots.style.display = "none";
+                btnText.innerHTML = "Read less"; 
+                moreText.style.display = "inline";
+                }
+            } 
+        </script>
+        <script>
+            //time and date
+            const days=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+            const months=['January','February','March','April','May','June','July','August','September','October','November','December'];
+            var date=new Date();
+            var hour = date.getHours();
+            var minutes = date.getMinutes();
+            var name = date.getDay()-1;
+            var day = date.getDate();
+            var month = date.getMonth();
+            document.getElementById("time").innerHTML = hour + ":" + minutes;
+            document.getElementById("date").innerHTML = days[name] + ", " + months[month] + " " + day;
+        </script>
+        <script>
+            //api
+             
+        </script>
+    </body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Index</title>
+        <link rel="stylesheet" href="./styles/styles.css"/>
+        <script src="script" href="./scripts/script.js"></script>
+    </head>
+    <body>
+        <div class="search-wrapper">
+            <label for="search">Search City</label>
+            <input type="search" id="search">
+        </div>
+        <div class="city-search" data-city-search>
+            <div class="card">
+                <div class="header"><a href=weather.html>London</a></div>
+            </div>
+            <div class="card">
+                <div class="header"><a href=weather.html>Paris</a></div>
+            </div>
+            <div class="card">
+                <div class="header"><a href=weather.html>Bucharest</a></div>
+            </div>
+            <div class="card">
+                <div class="header"><a href=weather.html>Los Angeles</a></div>
+            </div>
+        </div>
+            <template city-card-template>
+                <div class="card">
+                    <div class="header" data-header></div>
+                </div>
+            </template>
+
+        <script>   
+            const cityCardTemplate = document.querySelector("city-user-template");
+            const dataCitySearch = document.querySelector("data-city-search");
+            const Search = document.getElementById("search");
+            
+            let city=[];
+
+            Search.addEventListener("input",(e) =>{
+                const value = e.target.value;
+                console.log(value);
+                city.forEach(city => {
+                    const isVisible = city.name.includes(value);
+                    city.element.classList.toggle("hide",!isVisible);
+                });
+            });
+            fetch("https://jsonplaceholder.typicode.com/users")
+                .then(response => response.json())
+                .then(data => {
+                    data.map(city =>{
+                        const card = cityCardTemplate.content.cloneNode(true).children[0];
+                        const header = card.querySelector("data-header");
+                        header.textContent = city.name;
+                        dataCitySearch.append(card);
+                        return { name:city.name};
+                    })
+                    
+                })
+        </script>
+    </body>
+</html>

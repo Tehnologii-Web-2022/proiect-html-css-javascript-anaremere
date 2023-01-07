@@ -42,7 +42,7 @@ Now you can go further and create your own web based Weather application!
     - [OpenWeatherMap](https://openweathermap.org/api)
     - [OpenMeteo](https://open-meteo.com/en)
     - And many other more, just search for "free weather API"
-- For searching for citites try to find an API that exposes a list of cities.
+- For searching for cities try to find an API that exposes a list of cities.
 - For students that want to play around with frameworks, this project can also be implemented using a frontend framework like React or Vue.
 
 ## Background materials
